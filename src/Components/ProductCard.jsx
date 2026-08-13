@@ -1,16 +1,29 @@
-import './ProductCard.css'
+import { useNavigate } from "react-router-dom";
+import { useCart } from "./Hooks/useCart";
+import "../Components/ProductCard.css";
 
-function ProductCard({ name, price, image, onClick }) {
-  
+
+function ProductCard({ product }) {
+  const navigate = useNavigate();
+  const { addToCart } = useCart();
+
   return (
-    <>
-    <div className='ProductCard'>
-      <h3>{name}</h3>
-      <h4>{price}</h4>
-      <img src={image} alt={name} className="imgProduct" />
-      <button onClick={onClick}>Add To Cart</button>
-      </div>
-    </>
+    <div onClick={() => navigate(`/product/${product.id}`)}>
+      <img src={product.image} alt={product.name} />
+
+      <h2>{product.name}</h2>
+
+      <p>{product.price}</p>
+
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          addToCart(product);
+        }}
+      >
+        Add to Cart
+      </button>
+    </div>
   );
 }
 

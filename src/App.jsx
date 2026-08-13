@@ -1,6 +1,6 @@
 import Cart from "./Components/Cart";
 import Home from "./Components/Home";
-import "./Components/ProductCard.css";
+
 
 function App() {
   return (

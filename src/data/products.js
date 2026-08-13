@@ -1,4 +1,4 @@
-export function fetchProducts(shouldFail = true) {
+export function fetchProducts(shouldFail = false) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (shouldFail) {
@@ -6,7 +6,7 @@ export function fetchProducts(shouldFail = true) {
       } else {
         resolve(products);
       }
-    }, 800);
+    }, 500);
   });
 }
 
